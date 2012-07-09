@@ -89,7 +89,7 @@ MPQFile::openFile(const char* filename)
 			continue;
 
 		// Found!
-		DWORD filesize = SFileGetFileSize( fh );
+		DWORD filesize = SFileGetFileSize( fh, NULL );
 		size = filesize;
 
 		// HACK: in patch.mpq some files don't want to open and give 1 for filesize
@@ -100,7 +100,8 @@ MPQFile::openFile(const char* filename)
 		}
 
 		buffer = new unsigned char[size];
-		SFileReadFile( fh, buffer, (DWORD)size );
+		DWORD bytesRead;
+		SFileReadFile( fh, buffer, (DWORD)size, &bytesRead, NULL );
 		SFileCloseFile( fh );
 
 		return;
@@ -205,7 +206,7 @@ int MPQFile::getSize(const char* filename)
 		if( !SFileOpenFileEx( mpq_a, filename, SFILE_OPEN_PATCHED_FILE, &fh ) )
 			continue;
 
-		DWORD filesize = SFileGetFileSize( fh );
+		DWORD filesize = SFileGetFileSize( fh, NULL );
 		SFileCloseFile( fh );
 		return filesize;
 	}
