@@ -5,11 +5,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <assert.h>
-#if defined(_MSC_VER)
-#include <windows/unistd.h>
-#else
 #include <unistd.h>
-#endif
 #include "defines.h"
 
 std::string gamePath;
