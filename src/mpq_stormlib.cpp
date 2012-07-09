@@ -12,7 +12,7 @@ static ArchiveSet gOpenArchives;
 
 MPQArchive::MPQArchive(const char* filename) : ok(false)
 {
-	if (!SFileOpenArchive(filename, 0, MPQ_OPEN_FORCE_MPQ_V1|MPQ_OPEN_READ_ONLY, &mpq_a )) {
+	if (!SFileOpenArchive(filename, 0, MPQ_OPEN_READ_ONLY, &mpq_a )) {
 		int nError = GetLastError();
 		gLog("Error opening archive %s, error #: 0x%x\n", filename, nError);
 		return;
