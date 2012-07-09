@@ -34,7 +34,7 @@ public:
 	MPQArchive(const char* filename);
 	~MPQArchive();
 	bool isPartialMPQ(const char* filename);
-
+	bool applyPatch(const char* filename);
 	void close();
 };
 

@@ -35,6 +35,18 @@ bool MPQArchive::isPartialMPQ(const char* filename)
 	return false;
 }
 
+bool MPQArchive::applyPatch(const char* filename)
+{
+	if (!SFileOpenPatchArchive(mpq_a, filename, "", 0))
+	{
+		gLog("Failed to patch %s\n", filename);
+		return false;
+	}
+
+	gLog("Patching archive %s\n", filename);
+	return true;
+}
+
 void MPQArchive::close()
 {
 	if (ok == false)
