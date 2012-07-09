@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="areadb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dbcfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frustum.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="liquid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="maptile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mpq_stormlib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="particle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shaders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sky.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="video.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wmo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wowmapview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\getopt.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="animated.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="appstate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="areadb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dbcfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frustum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liquid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="maptile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="modelheaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mpq.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mpq_stormlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="quaternion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sky.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vec3d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="video.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wmo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wowmapview.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\unistd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\getopt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
