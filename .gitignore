@@ -1,0 +1,7 @@
+vc2010/Debug32
+vc2010/Release32
+ipch
+*.sdf
+*.opensdf
+*.suo
+*.vcxproj.user
