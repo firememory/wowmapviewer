@@ -41,6 +41,11 @@ void gLog(const char *str, ...)
 
 	va_start (ap,str);
 	vprintf(str,ap);
+#if defined(_MSC_VER)
+	char buffer[256];
+	vsprintf(buffer,str,ap);
+	OutputDebugString(buffer);
+#endif
 	va_end(ap);
 
 	fclose(flog);
