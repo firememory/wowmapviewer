@@ -57,6 +57,14 @@ void deleteFonts()
 	delete f32;
 }
 
+void replaceAll(std::string& str, const std::string& from, const std::string& to) {
+    size_t start_pos = 0;
+    while((start_pos = str.find(from, start_pos)) != std::string::npos) {
+        str.replace(start_pos, from.length(), to);
+        start_pos += to.length(); // In case 'to' contains 'from', like replacing 'x' with 'yx'
+    }
+}
+
 #ifdef _WINDOWS
 // HACK: my stupid compiler wont use main()
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -148,57 +156,23 @@ int main(int argc, char *argv[])
 	}
 	gLog("Locale: %s\n", locales[langID]);
 
-	sprintf(path,"%sCache/%s/patch-enUS-14946.MPQ",gamePath.c_str(),locales[langID]);
-	gLog("test %s\n",path);
-	archives.push_back(new MPQArchive(path));
-
-	if (usePatch) {
-		// patch goes first -> fake priority handling
-		sprintf(path, "%s%s", gamePath.c_str(), "patch-3.MPQ");
-		archives.push_back(new MPQArchive(path));
-
-		sprintf(path, "%s%s", gamePath.c_str(), "patch-2.MPQ");
-		archives.push_back(new MPQArchive(path));
-
-		sprintf(path, "%s%s", gamePath.c_str(), "patch.MPQ");
-		archives.push_back(new MPQArchive(path));
-
-		sprintf(path, "%s%s\\Patch-%s-2.MPQ", gamePath.c_str(), locales[langID], locales[langID]);
-		archives.push_back(new MPQArchive(path));
-
-		sprintf(path, "%s%s\\Patch-%s.MPQ", gamePath.c_str(), locales[langID], locales[langID]);
-		archives.push_back(new MPQArchive(path));
-	}
-
-	const char* archiveNames[] = {"expansion3.MPQ", "expansion2.MPQ", "expansion1.MPQ", "world.MPQ", "sound.MPQ", "art.MPQ","common.MPQ","common-2.MPQ","expansion.MPQ"};
-	for (size_t i=0; i<9; i++) {
-		sprintf(path, "%s%s", gamePath.c_str(), archiveNames[i]);
-		archives.push_back(new MPQArchive(path));
-	}
-
-	sprintf(path, "%s%s/expansion3-locale-%s.MPQ", gamePath.c_str(), locales[langID], locales[langID]);
-	archives.push_back(new MPQArchive(path));
-
-	sprintf(path, "%s%s/expansion2-locale-%s.MPQ", gamePath.c_str(), locales[langID], locales[langID]);
-	archives.push_back(new MPQArchive(path));
-
-	sprintf(path, "%s%s/expansion1-locale-%s.MPQ", gamePath.c_str(), locales[langID], locales[langID]);
-	archives.push_back(new MPQArchive(path));
-
-	MPQArchive *temp;
-	sprintf(path, "%s%s/locale-%s.MPQ", gamePath.c_str(), locales[langID], locales[langID]);
-	temp = new MPQArchive(path);
-	archives.push_back(temp);
-
-	/* 
-	 * this can patch maps.dbc to add a new UldumPhaseWreckedCamp map, however the map itself doesnt load due to the patch not being applied right
-	bool ret;
-	ret = SFileOpenPatchArchive(temp->mpq_a,"/home/clever/.wine/drive_c/Program Files/World of Warcraft/Data/wow-update-13164.MPQ","enUS\\",0);
-	printf("patch status %d\n",ret);
-	*/
-	const char *updates[] = { "13914", "14007", "14333", "14480", "14545", "14946", "15005", "15050" };
-	for (size_t i = 0; i < 8; i++) {
-		sprintf(path, "%swow-update-base-%s.MPQ",gamePath.c_str(),updates[i]);
+	const char* archiveNames[] = {
+		"expansion3.MPQ", 
+		"expansion2.MPQ", 
+		"expansion1.MPQ", 
+		"world.MPQ", 
+		"world2.MPQ", 
+		"sound.MPQ",
+		"art.MPQ",
+		"$LOC/expansion1-locale-$LOC.MPQ",
+		"$LOC/expansion2-locale-$LOC.MPQ",
+		"$LOC/expansion3-locale-$LOC.MPQ",
+		"$LOC/locale-$LOC.MPQ",
+	};
+	for (size_t i=0; i<11; i++) {
+		std::string mpq_name = archiveNames[i];
+		replaceAll(mpq_name, "$LOC", locales[langID]);
+		sprintf(path, "%s%s", gamePath.c_str(), mpq_name.c_str());
 		archives.push_back(new MPQArchive(path));
 	}
 	for (size_t i = 0; i < 8; i++) {
