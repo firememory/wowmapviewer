@@ -1,0 +1,3 @@
+[submodule "src/stormlib"]
+	path = src/stormlib
+	url = git@github.com:iamcal/StormLib.git
