@@ -15,147 +15,147 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="areadb.cpp">
+    <ClCompile Include="..\src\areadb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dbcfile.cpp">
+    <ClCompile Include="..\src\dbcfile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="font.cpp">
+    <ClCompile Include="..\src\font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="frustum.cpp">
+    <ClCompile Include="..\src\frustum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="liquid.cpp">
+    <ClCompile Include="..\src\liquid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="maptile.cpp">
+    <ClCompile Include="..\src\maptile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="menu.cpp">
+    <ClCompile Include="..\src\menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="model.cpp">
+    <ClCompile Include="..\src\model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mpq_stormlib.cpp">
+    <ClCompile Include="..\src\mpq_stormlib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="particle.cpp">
+    <ClCompile Include="..\src\particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shaders.cpp">
+    <ClCompile Include="..\src\shaders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sky.cpp">
+    <ClCompile Include="..\src\sky.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="..\src\test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="util.cpp">
+    <ClCompile Include="..\src\util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="video.cpp">
+    <ClCompile Include="..\src\video.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="wmo.cpp">
+    <ClCompile Include="..\src\wmo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world.cpp">
+    <ClCompile Include="..\src\world.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="wowmapview.cpp">
+    <ClCompile Include="..\src\wowmapview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="windows\getopt.c">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="..\src\windows\getopt.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="animated.h">
+    <ClInclude Include="..\src\animated.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="appstate.h">
+    <ClInclude Include="..\src\appstate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="areadb.h">
+    <ClInclude Include="..\src\areadb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dbcfile.h">
+    <ClInclude Include="..\src\dbcfile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="font.h">
+    <ClInclude Include="..\src\font.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="frustum.h">
+    <ClInclude Include="..\src\frustum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="liquid.h">
+    <ClInclude Include="..\src\liquid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="manager.h">
+    <ClInclude Include="..\src\manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="maptile.h">
+    <ClInclude Include="..\src\maptile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="matrix.h">
+    <ClInclude Include="..\src\matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="menu.h">
+    <ClInclude Include="..\src\menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="model.h">
+    <ClInclude Include="..\src\model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="modelheaders.h">
+    <ClInclude Include="..\src\modelheaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mpq.h">
+    <ClInclude Include="..\src\mpq.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mpq_stormlib.h">
+    <ClInclude Include="..\src\mpq_stormlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="particle.h">
+    <ClInclude Include="..\src\particle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="quaternion.h">
+    <ClInclude Include="..\src\quaternion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shaders.h">
+    <ClInclude Include="..\src\shaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sky.h">
+    <ClInclude Include="..\src\sky.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="test.h">
+    <ClInclude Include="..\src\test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="util.h">
+    <ClInclude Include="..\src\util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vec3d.h">
+    <ClInclude Include="..\src\vec3d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="video.h">
+    <ClInclude Include="..\src\video.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="wmo.h">
+    <ClInclude Include="..\src\wmo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world.h">
+    <ClInclude Include="..\src\world.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="wowmapview.h">
+    <ClInclude Include="..\src\wowmapview.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windows\unistd.h">
+    <ClInclude Include="..\src\windows\getopt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windows\getopt.h">
+    <ClInclude Include="..\src\windows\unistd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
