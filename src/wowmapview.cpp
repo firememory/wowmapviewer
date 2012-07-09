@@ -130,8 +130,8 @@ int main(int argc, char *argv[])
 	} else getGamePath();
 
 	char path[512];
-    sprintf(path,"%s%s",gamePath.c_str(),"world.MPQ");
-    if (!file_exists(path)) {
+	sprintf(path,"%s%s",gamePath.c_str(),"world.MPQ");
+	if (!file_exists(path)) {
 		gLog("error finding world.MPQ in '%s', is gamepath correct?, try -gamepath fullpass to data/\n",gamePath.c_str());
 		printf("error finding world.MPQ in '%s', is gamepath correct?, try -gamepath fullpass to data/\n",gamePath.c_str());
 		return -1;
@@ -178,6 +178,9 @@ int main(int argc, char *argv[])
 		sprintf(path, "%s%s", gamePath.c_str(), mpq_name.c_str());
 		base->applyPatch(path);
 	}
+
+	// finally apply the actual patches
+
 
 	OpenDBs();
 
