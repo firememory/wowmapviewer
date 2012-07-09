@@ -140,7 +140,7 @@ int main(int argc, char *argv[])
 	const char *locales[] = {"enUS", "enGB", "deDE", "frFR", "zhTW", "ruRU", "esES", "koKR", "zhCN"};
 
 	for (size_t i=0; i<9; i++) {
-		sprintf(path, "%s%s\\base-%s.MPQ", gamePath.c_str(), locales[i], locales[i]);
+		sprintf(path, "%s%s\\locale-%s.MPQ", gamePath.c_str(), locales[i], locales[i]);
 		if (file_exists(path)) {
 			langID = i;
 			break;
