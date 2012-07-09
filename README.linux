@@ -1,3 +1,0 @@
-compile stormlib with 'make -f Makefile.linux'
-then compile wowmapviewer in src/ with a plain old 'make'
-run './wowmapview -gamepath ...../Program\ Files/World\ of\ Warcraft/Data/' in bin/
