@@ -66,11 +66,13 @@ void replaceAll(std::string& str, const std::string& from, const std::string& to
 }
 
 #ifdef _WINDOWS
+#ifndef _MSC_VER
 // HACK: my stupid compiler wont use main()
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	char *argv[] = { "wowmapview.exe", "-w" };
 	return main(2,argv);
 }
+#endif
 #endif
 
 int main(int argc, char *argv[])
