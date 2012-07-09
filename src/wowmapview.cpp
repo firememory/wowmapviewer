@@ -84,8 +84,6 @@ int main(int argc, char *argv[])
 	int xres = 1024;
 	int yres = 768;
 
-	bool usePatch = true;
-
 	for (int i=1; i<argc; i++) {
 		if (!strcmp(argv[i],"-gamepath")) {
 			i++;
@@ -124,8 +122,6 @@ int main(int argc, char *argv[])
 			xres = 2048;
 			yres = 1536;
 		}
-		else if (!strcmp(argv[i],"-p")) usePatch = true;
-		else if (!strcmp(argv[i],"-np")) usePatch = false;
 	}
 
 	if (override_game_path) {
