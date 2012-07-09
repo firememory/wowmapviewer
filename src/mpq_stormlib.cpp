@@ -19,43 +19,13 @@ MPQArchive::MPQArchive(const char* filename) : ok(false)
 	}
 	gLog("Opening archive %s\n", filename);
 	
-	// do patch, but skip cache\ directory
-	/*
-	if (!(Lower(BeforeLast(filename,SLASH)).find("cache") && 
-		StartsWith(Lower(AfterLast(filename,SLASH)),"patch")) &&
-		!isPartialMPQ(filename)) { // skip the PTCH files atrchives
-		// do patch
-		for(int j=(int)mpqArchives.GetCount()-1; j>=0; j--) {
-			if (!mpqArchives[j].AfterLast(SLASH).StartsWith(wxT("wow-update-")))
-				continue;
-			if (mpqArchives[j].AfterLast(SLASH).Len() == strlen("wow-update-xxxxx.mpq")) {
-				SFileOpenPatchArchive(mpq_a, mpqArchives[j], "base", 0);
-				gLog("Appending base patch %s on %s", mpqArchives[j].c_str(), filename.c_str());
-				SFileOpenPatchArchive(mpq_a, mpqArchives[j], langName, 0);
-				gLog("Appending %s patch %s on %s", langName.c_str(), mpqArchives[j].c_str(), filename.c_str());
-			} else if (mpqArchives[j].BeforeLast(SLASH) == filename.BeforeLast(SLASH)) {
-				SFileOpenPatchArchive(mpq_a, mpqArchives[j], "", 0);
-				gLog("Appending patch %s on %s", mpqArchives[j], filename);
-			}
-		}
-	}
-	*/
-
 	ok = true;
 	gOpenArchives.push_back( make_pair( filename, &mpq_a ) );
 }
 
 MPQArchive::~MPQArchive()
 {
-	/*
-	for(ArchiveSet::iterator i=gOpenArchives.begin(); i!=gOpenArchives.end();++i)
-	{
-		mpq_archive &mpq_a = **i;
-		
-		free(mpq_a.header);
-	}
-	*/
-	//gOpenArchives.erase(gOpenArchives.begin(), gOpenArchives.end());
+	SFileCloseArchive(mpq_a);
 }
 
 bool MPQArchive::isPartialMPQ(const char* filename)
