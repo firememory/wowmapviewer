@@ -154,24 +154,29 @@ int main(int argc, char *argv[])
 	}
 	gLog("Locale: %s\n", locales[langID]);
 
+	// open world.MPQ as our base
+	sprintf(path, "%s%s", gamePath.c_str(), "world.MPQ");
+	MPQArchive* base = new MPQArchive(path);
+	archives.push_back(base);
+
+	// now patch everything else on top of it
 	const char* archiveNames[] = {
-		"expansion3.MPQ", 
-		"expansion2.MPQ", 
-		"expansion1.MPQ", 
-		"world.MPQ", 
 		"world2.MPQ", 
 		"sound.MPQ",
 		"art.MPQ",
+		"expansion1.MPQ", 
+		"expansion2.MPQ", 
+		"expansion3.MPQ", 
 		"$LOC/expansion1-locale-$LOC.MPQ",
 		"$LOC/expansion2-locale-$LOC.MPQ",
 		"$LOC/expansion3-locale-$LOC.MPQ",
 		"$LOC/locale-$LOC.MPQ",
 	};
-	for (size_t i=0; i<11; i++) {
+	for (size_t i=0; i<10; i++) {
 		std::string mpq_name = archiveNames[i];
 		replaceAll(mpq_name, "$LOC", locales[langID]);
 		sprintf(path, "%s%s", gamePath.c_str(), mpq_name.c_str());
-		archives.push_back(new MPQArchive(path));
+		base->applyPatch(path);
 	}
 
 	OpenDBs();
