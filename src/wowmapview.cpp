@@ -132,7 +132,7 @@ int main(int argc, char *argv[])
 	char path[512];
     sprintf(path,"%s%s",gamePath.c_str(),"world.MPQ");
     if (!file_exists(path)) {
-		gLog("error finding world.MPQ in '%s', is gamepath correct?, try -gamepath fullpass to data/",gamePath.c_str());
+		gLog("error finding world.MPQ in '%s', is gamepath correct?, try -gamepath fullpass to data/\n",gamePath.c_str());
 		printf("error finding world.MPQ in '%s', is gamepath correct?, try -gamepath fullpass to data/\n",gamePath.c_str());
 		return -1;
 	}
