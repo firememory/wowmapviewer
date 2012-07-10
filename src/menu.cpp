@@ -70,28 +70,6 @@ Menu::Menu()
 		maps.push_back(e);
 
 	}
-	// manualy extracted the patches and guessed the map names
-	const char *extra_maps[] = { "TheHourOfTwilight", "DarkmoonFaire" };
-	for (int i = 0; i < 2; i++) {
-		MapEntry e;
-		e.font = f16;
-		e.id = 1; // i think this only effects the sky right now
-		e.name = extra_maps[i];
-		e.x0 = x;
-		e.y0 = y;
-
-		e.y1 = e.y0 + 16;
-		y += 16;
-
-		if ((y + 25) >= video.yres) {
-			x += 160;
-			y = 0;
-		}
-
-		e.x1 = e.x0 + e.font->textwidth(e.name.c_str());
-
-		maps.push_back(e);
-	}
 
 	sel = -1;
 	cmd = 0;
