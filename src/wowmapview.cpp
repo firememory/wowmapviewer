@@ -13,17 +13,11 @@
 #include <ctime>
 #include <cstdlib>
 
-#include "util.h"
-#include "mpq.h"
-#include "video.h"
 #include "appstate.h"
-
 #include "test.h"
-#include "menu.h"
-#include "areadb.h"
+#include "mpqloader.h"
 
 int fullscreen = 0;
-
 
 std::vector<AppState*> gStates;
 bool gPop = false;
@@ -55,49 +49,6 @@ void deleteFonts()
 	delete f16;
 	delete f24;
 	delete f32;
-}
-
-void replaceAll(std::string& str, const std::string& from, const std::string& to)
-{
-    size_t start_pos = 0;
-    while((start_pos = str.find(from, start_pos)) != std::string::npos)
-	{
-        str.replace(start_pos, from.length(), to);
-        start_pos += to.length(); // In case 'to' contains 'from', like replacing 'x' with 'yx'
-    }
-}
-
-void loadPatches(MPQArchive* base, std::string dir, const char* mask)
-{
-	std::string search_path = dir;
-	search_path.append(mask);
-
-	std::vector<std::string> matches;
-
-#ifdef _WIN32
-	HANDLE hFind;
-	WIN32_FIND_DATA FindFileData;
-
-	if((hFind = FindFirstFile(search_path.c_str(), &FindFileData)) != INVALID_HANDLE_VALUE)
-	{
-		do
-		{
-			//gLog("FOUND PATCH MPQ: %s%s\n", dir.c_str(), FindFileData.cFileName);
-			matches.push_back(string(FindFileData.cFileName));
-		}while(FindNextFile(hFind, &FindFileData));
-		FindClose(hFind);
-	}
-#endif
-
-	//matches.push_back("wow-update-base-11111.MPQ");
-	//matches.push_back("wow-update-base-99999.MPQ");
-	sort(matches.begin(), matches.end());
-
-	for(std::vector<std::string>::iterator it = matches.begin(); it != matches.end(); ++it) {
-
-		std::string mpq_path = dir;
-		base->applyPatch(mpq_path.append(*it).c_str());
-	}
 }
 
 #ifdef _WINDOWS
@@ -173,52 +124,8 @@ int main(int argc, char *argv[])
 	}
 
 	gLog(APP_TITLE " " APP_VERSION " " APP_BUILD "\nGame path: %s\n", gamePath.c_str());
-
-	std::vector<MPQArchive*> archives;
 	
-	int langID = 0;
-
-	const char *locales[] = {"enUS", "enGB", "deDE", "frFR", "zhTW", "ruRU", "esES", "koKR", "zhCN"};
-
-	for (size_t i=0; i<9; i++) {
-		sprintf(path, "%s%s\\locale-%s.MPQ", gamePath.c_str(), locales[i], locales[i]);
-		if (file_exists(path)) {
-			langID = i;
-			break;
-		}
-	}
-	gLog("Locale: %s\n", locales[langID]);
-
-	// open world.MPQ as our base
-	sprintf(path, "%s%s", gamePath.c_str(), "world.MPQ");
-	MPQArchive* base = new MPQArchive(path);
-	archives.push_back(base);
-
-	// now patch everything else on top of it
-	const char* archiveNames[] = {
-		"world2.MPQ", 
-		"sound.MPQ",
-		"art.MPQ",
-		"expansion1.MPQ", 
-		"expansion2.MPQ", 
-		"expansion3.MPQ", 
-		"$LOC/expansion1-locale-$LOC.MPQ",
-		"$LOC/expansion2-locale-$LOC.MPQ",
-		"$LOC/expansion3-locale-$LOC.MPQ",
-		"$LOC/locale-$LOC.MPQ",
-	};
-	for (size_t i=0; i<10; i++) {
-		std::string mpq_name = archiveNames[i];
-		replaceAll(mpq_name, "$LOC", locales[langID]);
-		sprintf(path, "%s%s", gamePath.c_str(), mpq_name.c_str());
-		base->applyPatch(path);
-	}
-
-	// finally apply the actual patches
-	loadPatches(base, gamePath, "wow-update-base-*.MPQ");
-	loadPatches(base, gamePath.append(locales[langID]).append("/"), "wow-update-*.MPQ");
-
-	OpenDBs();
+	MPQLoader *ml = new MPQLoader(gamePath);
 
 	video.init(xres,yres,fullscreen!=0);
 	SDL_WM_SetCaption(APP_TITLE,NULL);
@@ -244,9 +151,7 @@ int main(int argc, char *argv[])
 	AppState *as;
 	gFPS = 0;
 
-	Menu *m = new Menu();
-	as = m;
-
+	as = ml;
 	gStates.push_back(as);
 
 	bool done = false;
@@ -310,15 +215,12 @@ int main(int argc, char *argv[])
 		if (fps_delay) usleep(fps_delay);
 	}
 
-
 	deleteFonts();
 	
 	video.close();
 
-	for (std::vector<MPQArchive*>::iterator it = archives.begin(); it != archives.end(); ++it) {
-        (*it)->close();
-	}
-	archives.clear();
+	// close MPQs
+	delete ml;
 
 	gLog("\nExiting.\n");
 

@@ -121,6 +121,7 @@ copy ../bin/SDL.dll $(OutDir)
     <ClCompile Include="..\src\maptile.cpp" />
     <ClCompile Include="..\src\menu.cpp" />
     <ClCompile Include="..\src\model.cpp" />
+    <ClCompile Include="..\src\mpqloader.cpp" />
     <ClCompile Include="..\src\mpq_stormlib.cpp" />
     <ClCompile Include="..\src\particle.cpp" />
     <ClCompile Include="..\src\shaders.cpp" />
@@ -148,6 +149,7 @@ copy ../bin/SDL.dll $(OutDir)
     <ClInclude Include="..\src\model.h" />
     <ClInclude Include="..\src\modelheaders.h" />
     <ClInclude Include="..\src\mpq.h" />
+    <ClInclude Include="..\src\mpqloader.h" />
     <ClInclude Include="..\src\mpq_stormlib.h" />
     <ClInclude Include="..\src\particle.h" />
     <ClInclude Include="..\src\quaternion.h" />
