@@ -57,12 +57,47 @@ void deleteFonts()
 	delete f32;
 }
 
-void replaceAll(std::string& str, const std::string& from, const std::string& to) {
+void replaceAll(std::string& str, const std::string& from, const std::string& to)
+{
     size_t start_pos = 0;
-    while((start_pos = str.find(from, start_pos)) != std::string::npos) {
+    while((start_pos = str.find(from, start_pos)) != std::string::npos)
+	{
         str.replace(start_pos, from.length(), to);
         start_pos += to.length(); // In case 'to' contains 'from', like replacing 'x' with 'yx'
     }
+}
+
+void loadPatches(MPQArchive* base, std::string dir, const char* mask)
+{
+	std::string search_path = dir;
+	search_path.append(mask);
+
+	std::vector<std::string> matches;
+
+#ifdef _WIN32
+	HANDLE hFind;
+	WIN32_FIND_DATA FindFileData;
+
+	if((hFind = FindFirstFile(search_path.c_str(), &FindFileData)) != INVALID_HANDLE_VALUE)
+	{
+		do
+		{
+			//gLog("FOUND PATCH MPQ: %s%s\n", dir.c_str(), FindFileData.cFileName);
+			matches.push_back(string(FindFileData.cFileName));
+		}while(FindNextFile(hFind, &FindFileData));
+		FindClose(hFind);
+	}
+#endif
+
+	//matches.push_back("wow-update-base-11111.MPQ");
+	//matches.push_back("wow-update-base-99999.MPQ");
+	sort(matches.begin(), matches.end());
+
+	for(std::vector<std::string>::iterator it = matches.begin(); it != matches.end(); ++it) {
+
+		std::string mpq_path = dir;
+		base->applyPatch(mpq_path.append(*it).c_str());
+	}
 }
 
 #ifdef _WINDOWS
@@ -180,7 +215,8 @@ int main(int argc, char *argv[])
 	}
 
 	// finally apply the actual patches
-
+	loadPatches(base, gamePath, "wow-update-base-*.MPQ");
+	loadPatches(base, gamePath.append(locales[langID]).append("/"), "wow-update-*.MPQ");
 
 	OpenDBs();
 
